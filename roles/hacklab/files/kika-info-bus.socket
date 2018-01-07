@@ -1,0 +1,10 @@
+[Unit]
+Description=kika-info-bus socket
+
+[Socket]
+ListenStream=/run/kika-info-bus.sock
+SocketMode=0660
+SocketGroup=www-data
+
+[Install]
+WantedBy=sockets.target

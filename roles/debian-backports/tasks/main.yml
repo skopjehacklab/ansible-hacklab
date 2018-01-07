@@ -1,0 +1,10 @@
+---
+- name: enable backports repo
+  apt_repository: repo='deb http://ftp.us.debian.org/debian {{ ansible_distribution_release }}-backports main' state=present
+
+- name: setup PinPriority for backports packages
+  template: src=backport.prefs dest=/etc/apt/preferences.d/01-backports.pref owner=root group=root mode=0644
+
+- name: install backports packages
+  apt: name={{item}} state=latest default_release={{ ansible_distribution_release }}-backports update_cache=yes
+  with_items: "{{packages | default([])}}"

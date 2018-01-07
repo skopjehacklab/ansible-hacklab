@@ -1,0 +1,30 @@
+---
+- name: set hostname to {{hostname}}
+  hostname: name={{hostname}}
+
+- name: Set authorized key took from file
+  authorized_key: user=kika key={{item}}
+  with_items: {{ssh_keys}}
+
+- name: disable ssh with password
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^#?PasswordAuthentication" line="PasswordAuthentication no"
+
+- name: install needed packages
+  apt: name={{item}} state=latest
+    with_items:
+      - dnsmasq
+      - nfs-kernel-server
+      - nginx-full
+      - libnginx-mod-nchan
+      - uwsgi-plugin-python3
+
+- name: setup networkd
+  template: src=en.network dest=/etc/systemd/network/{{net_dev}}.network
+
+- name: setup nfs
+  copy: src=exports dest=/etc/exports
+
+- name: enable getty on ttyS0
+  service: enabled=yes name=getty@ttyS0
+
+# get syslinux setup pxe

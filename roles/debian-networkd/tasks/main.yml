@@ -1,0 +1,14 @@
+---
+- name: disable old style networking
+  package: pkg=ifupdown state=absent
+
+- name: enable systemd services
+  service: name={{ item }} enabled=yes
+  with_items:
+      - systemd-networkd
+      - systemd-resolved
+      - systemd-timesyncd
+
+- name: set dhcp on {{ dhcp_net_dev }}
+  template: src=eth.network dest=/etc/systemd/network/{{ dhcp_net_dev }}.network owner=root group=root mode=0644
+  when: dhcp_net_dev

@@ -1,0 +1,9 @@
+[Match]
+Name={{net_dev}}
+
+[Network]
+#DHCP=yes
+Address=192.168.88.2/24
+Gateway=192.168.88.1
+MulticastDNS=yes
+DNS=8.8.8.8 9.9.9.9

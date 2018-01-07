@@ -1,0 +1,7 @@
+---
+- name: remove syslog
+  package: name=rsyslog state=absent
+
+- name: enable persistent journal
+  file: path=/var/log/journal state=directory mode=0755
+  when: persistent_journal

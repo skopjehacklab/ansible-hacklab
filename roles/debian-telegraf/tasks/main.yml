@@ -1,0 +1,9 @@
+---
+- name: add influxdata repo key
+  apt_key: id=684A14CF2582E0C5 url=https://repos.influxdata.com/influxdb.key
+
+- name: add influxdb repo
+  apt_repository: state=present repo='deb https://repos.influxdata.com/debian {{ ansible_distribution_release }} stable'
+
+- name: install telegraf
+  apt: name=telegraf state=latest

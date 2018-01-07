@@ -1,0 +1,16 @@
+---
+- name: debian roles
+  hosts: all
+
+  roles:
+   - debian-common-base
+   - role: debian-backports
+     pin_backports: 700
+   - debian-journald
+   - debian-networkd
+   - debian-telegraf
+
+   - role: hacklab
+     net_dev: enp0s25
+     hostname: polymorph
+

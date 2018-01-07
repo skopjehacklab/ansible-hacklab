@@ -1,0 +1,17 @@
+# /home/pxe/tftproot/README.txt
+/home/pxe/iso/archlinux-2017.10.01-x86_64.iso /home/pxe/nfs/arch  auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/Fedora-Workstation-Live-x86_64-27-1.6.iso /home/pxe/nfs/fedora auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/linuxmint-18.2-cinnamon-64bit.iso /home/pxe/nfs/linuxmint auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/systemrescuecd-x86-5.1.1.iso /home/pxe/nfs/systemrescuecd auto loop,nofail,x-systemd.automount,ro 0 0
+
+/home/pxe/iso/ubuntu/ubuntu-17.10-desktop-amd64.iso /home/pxe/nfs/ubuntu-17.10-desktop-amd64 auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/ubuntu/kubuntu-17.10-desktop-amd64.iso /home/pxe/nfs/kubuntu-17.10-desktop-amd64 auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/ubuntu/kubuntu-17.10-desktop-i386.iso /home/pxe/nfs/kubuntu-17.10-desktop-i386 auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/ubuntu/ubuntu-16.04.3-desktop-amd64.iso /home/pxe/nfs/ubuntu-16.04-desktop-amd64 auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/ubuntu/ubuntu-16.04.3-desktop-i386.iso /home/pxe/nfs/ubuntu-16.04-desktop-i386   auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/ubuntu/ubuntu-mate-17.10-desktop-amd64.iso /home/pxe/nfs/ubuntu-mate-17.10-desktop-amd64 auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/ubuntu/ubuntu-mate-17.10-desktop-i386.iso /home/pxe/nfs/ubuntu-mate-17.10-desktop-i386 auto loop,nofail,x-systemd.automount,ro 0 0
+
+/home/pxe/iso/CentOS-7-x86_64-Minimal-1708.iso /home/pxe/nfs/centos-7-x86_64  auto loop,nofail,x-systemd.automount,ro 0 0
+/home/pxe/iso/CentOS-6.9-x86_64-minimal.iso /home/pxe/nfs/centos-6-x86_64     auto loop,nofail,x-systemd.automount,ro 0 0
+
