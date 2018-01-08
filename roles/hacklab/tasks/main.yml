@@ -17,6 +17,7 @@
       - nginx-full
       - libnginx-mod-nchan
       - uwsgi-plugin-python3
+      - mosquitto
 
 - name: setup networkd
   template: src=en.network dest=/etc/systemd/network/{{net_dev}}.network
@@ -26,5 +27,3 @@
 
 - name: enable getty on ttyS0
   service: enabled=yes name=getty@ttyS0
-
-# get syslinux setup pxe
