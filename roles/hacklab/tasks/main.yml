@@ -4,20 +4,20 @@
 
 - name: Set authorized key took from file
   authorized_key: user={{admin_user}} key={{item}}
-  with_items: {{ssh_keys}}
+  with_items: "{{ssh_keys}}"
 
 - name: disable ssh with password
   lineinfile: dest=/etc/ssh/sshd_config regexp="^#?PasswordAuthentication" line="PasswordAuthentication no"
 
 - name: install needed packages
   apt: name={{item}} state=latest
-    with_items:
-      - dnsmasq
-      - nfs-kernel-server
-      - nginx-full
-      - libnginx-mod-nchan
-      - uwsgi-plugin-python3
-      - mosquitto
+  with_items:
+    - dnsmasq
+    - nfs-kernel-server
+    - nginx-full
+    - libnginx-mod-nchan
+    - uwsgi-plugin-python3
+    - mosquitto
 
 - name: setup networkd
   template: src=en.network dest=/etc/systemd/network/{{net_dev}}.network
@@ -30,25 +30,25 @@
 
 
 # PXE env
-- name: download isos
+- name: download isos (won't remove old ones)
   get_url: url={{item.url}} checksum={{item.checksum}} dest=/home/pxe/iso/
-  with_items: {{pxe_distros}}
+  with_items: "{{pxe_distros}}"
 
 - name: create directories to loop mount isos
   file:
     path: /home/pxe/nfs/{{ item.url | urlsplit('path') | basename | splitext | first }}
     state: directory
     mode: 0755
-  with_items: {{pxe_distros}}
+  with_items: "{{pxe_distros}}"
 
-- name: setup /etc/fstab
+- name: setup /etc/fstab (won't remove old ones)
   mount:
     state: present
     src: /home/pxe/iso/{{ item.url | urlsplit('path') | basename }}
     path: /home/pxe/nfs/{{ item.url | urlsplit('path') | basename | splitext | first }}
     fstype: auto
     opts: loop,nofail,x-systemd.automount,ro
-  with_items: {{pxe_distros}}
+  with_items: "{{pxe_distros}}"
 
 - name: setup /etc/exports for nfs
   lineinfile:
