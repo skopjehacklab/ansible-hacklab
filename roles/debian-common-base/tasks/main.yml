@@ -16,6 +16,7 @@
   with_items:
     - apt-transport-https
     - locales
+    - file
     - sysstat
     - rsync
     - vim
