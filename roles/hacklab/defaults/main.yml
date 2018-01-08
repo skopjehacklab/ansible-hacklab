@@ -2,3 +2,44 @@
 admin_user: kika
 ssh_keys:
   - https://github.com/gdamjan.keys
+
+
+pxe_distros:
+  - url: https://mirror.t-home.mk/archlinux/iso/2018.01.01/archlinux-2018.01.01-x86_64.iso
+    checksum: sha1:6c98c1932731eff98e430958c3589c4124bafbe9
+
+  - url: https://mirror.t-home.mk/centos/6.9/isos/x86_64/CentOS-6.9-x86_64-minimal.iso
+    checksum: sha256:422af57b493b8af49d485885a730c5a1d955f803fac85aa51311c393168b9080
+  - url: https://mirror.t-home.mk/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso
+    checksum: sha256:bba314624956961a2ea31dd460cd860a77911c1e0a56e4820a12b9c5dad363f5
+
+  - url: https://download.fedoraproject.org/pub/fedora/linux/releases/27/Workstation/x86_64/iso/Fedora-Workstation-Live-x86_64-27-1.6.iso
+    checksum: sha256:d242345fa6b5f8cc80e2317c46d15bb1fc4ad70b9a3516c9bc2fb6f3599c8117
+
+  - url: https://netcologne.dl.sourceforge.net/project/systemrescuecd/sysresccd-x86/5.1.2/systemrescuecd-x86-5.1.2.iso
+    checksum: sha256:a67d4ac20c1e02e53f51f97fe337dcd28f0d08ac16c64a65ae9b6664f19b699f
+
+  - url: http://cdimage.ubuntu.com/kubuntu/releases/17.10/release/kubuntu-17.10-desktop-amd64.iso
+    checksum: sha256:0aff4df0ff4d172bebaee1a6291ca6ab557f57046858c0c8242e6af69c380033
+
+  - url: http://cdimage.ubuntu.com/kubuntu/releases/17.10/release/kubuntu-17.10-desktop-i386.iso
+    checksum: sha256:cfead68e84717ee5612c6f19e4b33b0684d7cca3508774baee6dd74817937e2f
+
+  - url: http://de.releases.ubuntu.com/16.04.3/ubuntu-16.04.3-desktop-i386.iso
+    checksum: sha256:e28a99e1754a5b04741cd09ff557df2173a0177df79782aa0eb952d3d9803a2b
+
+  - url: http://de.releases.ubuntu.com/16.04.3/ubuntu-16.04.3-desktop-amd64.iso
+    checksum: sha256:1384ac8f2c2a6479ba2a9cbe90a585618834560c477a699a4a7ebe7b5345ddc1
+
+  - url: http://de.releases.ubuntu.com/17.10/ubuntu-17.10-desktop-amd64.iso
+    checksum: sha256:aaf4ba1809e08f6108f1e410174ebcbd49af5cc4f6493ab3d98d0683289bbc6e
+
+  - url: http://cdimage.ubuntu.com/ubuntu-mate/releases/17.10/release/ubuntu-mate-17.10-desktop-amd64.iso
+    checksum: sha256:87c7eb25cea5a7ca976b3ad7896d2868e080f4ad109cce4ddf18ab590400be69
+
+  - url: http://cdimage.ubuntu.com/ubuntu-mate/releases/17.10/release/ubuntu-mate-17.10-desktop-i386.iso
+    checksum: sha256:209553ca1a73f67bb309f84fadd5bc4e445ebc1cdf7a75b8448e6106fb85a8cf
+
+  - url: http://gd.tuwien.ac.at/linux/mint/isos/stable/18.3/linuxmint-18.3-cinnamon-64bit.iso
+    checksum: sha256:ecebdf9ac4697b6c2d7feffd1bc5430641bca67c7df122fa2914824dc8844b3a
+

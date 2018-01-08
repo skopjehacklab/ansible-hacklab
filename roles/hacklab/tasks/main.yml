@@ -27,3 +27,30 @@
 
 - name: enable getty on ttyS0
   service: enabled=yes name=getty@ttyS0
+
+
+# PXE env
+- name: download isos
+  get_url: url={{item.url}} checksum={{item.checksum}} dest=/home/pxe/iso/
+  with_items: {{pxe_distros}}
+
+- name: create directories to loop mount isos
+  file:
+    path: /home/pxe/nfs/{{ item.url | urlsplit('path') | basename | splitext | first }}
+    state: directory
+    mode: 0755
+  with_items: {{pxe_distros}}
+
+- name: setup /etc/fstab
+  mount:
+    state: present
+    src: /home/pxe/iso/{{ item.url | urlsplit('path') | basename }}
+    path: /home/pxe/nfs/{{ item.url | urlsplit('path') | basename | splitext | first }}
+    fstype: auto
+    opts: loop,nofail,x-systemd.automount,ro
+  with_items: {{pxe_distros}}
+
+- name: setup /etc/exports for nfs
+  lineinfile:
+    path: /etc/exports
+    line: '/home/pxe/nfs *(ro,async,no_subtree_check,no_root_squash,insecure,crossmnt)'
