@@ -12,7 +12,7 @@
   apt: upgrade=dist
 
 - name: install must-have tools
-  package: pkg={{ item }} state=installed
+  apt: pkg={{ item }} state=installed
   with_items:
     - apt-transport-https
     - locales
@@ -35,7 +35,7 @@
     - systemd-cron
 
 - name: remove unneeded stuff
-  package: pkg={{ item }} state=absent
+  apt: pkg={{ item }} state=absent
   with_items:
     - whoopsie
     - apport
