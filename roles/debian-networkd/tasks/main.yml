@@ -11,4 +11,4 @@
 
 - name: set dhcp on {{ dhcp_net_dev }}
   template: src=eth.network dest=/etc/systemd/network/{{ dhcp_net_dev }}.network owner=root group=root mode=0644
-  when: dhcp_net_dev
+  when: dhcp_net_dev is defined
