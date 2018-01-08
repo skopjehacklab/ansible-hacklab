@@ -1,9 +1,8 @@
 #!/bin/sh /etc/rc.common
 
 USE_PROCD=1
-if [ "$1" == "run_service" ]; then
-    run_service
-fi
+START=50
+STOP=50
 
 start_service() {
   procd_open_instance wifi-sta-to-mqtt
@@ -37,3 +36,7 @@ run_service () {
         fi
     done
 }
+
+if [ "$1" == "run_service" ]; then
+    run_service
+fi
