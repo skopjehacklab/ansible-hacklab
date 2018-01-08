@@ -1,6 +1,9 @@
 ---
 - name: disable apt translations
-  copy: src=99translations dest=/etc/apt/apt.conf.d/99translations owner=root group=root mode=0644
+  copy: src=99translations dest=/etc/apt/apt.conf.d/ owner=root group=root mode=0644
+
+- name: apt, don't install recommended and suggested packages
+  copy: src=99apt-no-install dest=/etc/apt/apt.conf.d/ owner=root group=root mode=0644
 
 - name: make sure apt cache is up to date
   apt: update_cache=yes cache_valid_time=86400
@@ -34,7 +37,6 @@
 - name: remove unneeded stuff
   package: pkg={{ item }} state=absent
   with_items:
-    - rpcbind
     - whoopsie
     - apport
     - popularity-contest
