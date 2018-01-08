@@ -3,7 +3,7 @@
   hostname: name={{hostname}}
 
 - name: Set authorized key took from file
-  authorized_key: user=kika key={{item}}
+  authorized_key: user={{admin_user}} key={{item}}
   with_items: {{ssh_keys}}
 
 - name: disable ssh with password
