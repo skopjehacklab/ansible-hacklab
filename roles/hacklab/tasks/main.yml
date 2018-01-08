@@ -31,7 +31,7 @@
 
 # PXE env
 - name: download isos (won't remove old ones)
-  get_url: url={{item.url}} checksum={{item.checksum}} dest=/home/pxe/iso/
+  get_url: url={{item.url}} checksum={{item.checksum}} dest=/home/pxe/iso/{{ item.url | urlsplit('path') | basename }}
   with_items: "{{pxe_distros}}"
 
 - name: create directories to loop mount isos
