@@ -6,7 +6,7 @@ ssh_keys:
 
 pxe_distros:
   - url: https://mirror.t-home.mk/archlinux/iso/2018.01.01/archlinux-2018.01.01-x86_64.iso
-    checksum: sha1:6c98c1932731eff98e430958c3589c4124bafbe9
+    checksum: sha256:bf31a6d74677701a9b846d51941a01fd10964d90bd8f8c1290bc0f1bac311443
 
   - url: https://mirror.t-home.mk/centos/6.9/isos/x86_64/CentOS-6.9-x86_64-minimal.iso
     checksum: sha256:422af57b493b8af49d485885a730c5a1d955f803fac85aa51311c393168b9080
