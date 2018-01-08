@@ -1,5 +1,5 @@
 ---
-- name: debian roles
+- name: make a hacklab
   hosts: all
 
   roles:
