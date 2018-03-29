@@ -1,0 +1,9 @@
+---
+- name: add couchdb repo key
+  apt_key: id=379CE192D401AB61 url=https://couchdb.apache.org/repo/bintray-pubkey.asc
+
+- name: add couchdb repo
+  apt_repository: state=present repo='deb https://apache.bintray.com/couchdb-deb {{ ansible_distribution_release }} main'
+
+- name: install couchdb
+  apt: name=couchdb state=latest
