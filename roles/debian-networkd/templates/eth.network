@@ -1,5 +1,12 @@
 [Match]
-Name={{ dhcp_net_dev }}
+Name={{ net_dev }}
 
 [Network]
+{% if address is defined %}
+Address={{address}}
+{% else %}
 DHCP=yes
+{% endif %}
+{% if gateway is defined %}
+Gateway={{gateway}}
+{% endif %}
