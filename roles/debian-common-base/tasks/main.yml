@@ -12,7 +12,7 @@
   apt: upgrade=dist
 
 - name: install must-have tools
-  apt: pkg={{ item }} state=installed
+  apt: pkg={{ item }} state=latest
   with_items:
     - apt-transport-https
     - locales
