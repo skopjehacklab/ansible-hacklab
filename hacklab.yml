@@ -8,7 +8,8 @@
      pin_backports: 700
    - debian-journald
    - debian-networkd
-   - debian-telegraf
+   - role: debian-influxdata
+     influx_install: ["telegraf"]
 
    - role: hacklab
      net_dev: enp0s25

@@ -5,5 +5,7 @@
 - name: add influxdb repo
   apt_repository: state=present repo='deb https://repos.influxdata.com/debian {{ ansible_distribution_release }} stable'
 
-- name: install telegraf
-  apt: name=telegraf state=latest
+- name: install influxdata apps
+  apt: name={{item}} state=latest
+  with_items: "{{influx_install}}"
+  when: influx_install is defined
