@@ -1,0 +1,23 @@
+[Unit]
+Description=mediawiki uwsgi service
+After=network.target
+Before=nginx.service
+Requires=mediawiki.socket
+
+[Service]
+Type=notify
+DynamicUser=yes
+User=mediawiki
+Group=mediawiki
+RuntimeDirectory=mediawiki
+ReadWritePaths=/srv/wiki.spodeli.org/html/uploads
+ExecStart=/usr/bin/uwsgi --ini /etc/uwsgi/mediawiki.ini:nginx --master-fifo /run/mediawiki/master-fifo --die-on-term
+
+ExecReload=/bin/bash -c 'echo w > /run/mediawiki/master-fifo'
+ExecStop=/bin/bash -c 'echo q > /run/mediawiki/master-fifo'
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+Also=mediawiki.socket

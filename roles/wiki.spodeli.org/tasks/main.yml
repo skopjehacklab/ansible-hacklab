@@ -1,0 +1,44 @@
+---
+- name: install supporting packages
+  apt: state=latest name={{item}}
+  with_items:
+   - mariadb-server
+   - php-mbstring
+   - php-intl
+   - php-mysql
+   - php-xml
+   - uwsgi-plugin-php
+   - imagemagick
+
+# FIXME:
+# https://releases.wikimedia.org/mediawiki/1.30/mediawiki-1.30.0.tar.gz put it in /srv/wiki.spodeli.org/mediawiki
+#
+
+- template: src=LocalSettings.php dest=/srv/wiki.spodeli.org/
+
+- name: nginx vhost config
+  copy: src=wiki.spodeli.org.conf dest=/etc/nginx/sites-enabled/
+
+- name: systemd service and socket units
+  copy: src={{item}} dest=/etc/systemd/system/
+  with_items:
+   - mediawiki.service
+   - mediawiki.socket
+
+- name: uwsgi config
+  copy: src=mediawiki.ini dest=/etc/uwsgi/
+
+- name: enable systemd socket
+  systemd: name=mediawiki.socket enabled=yes
+
+- name: create the database
+  mysql_db:
+    name: wiki
+    state: present
+
+- name: create db user
+  mysql_user:
+    name: wiki
+    password: {{wiki_db_password}}
+    priv: 'wiki.*:ALL'
+    state: present

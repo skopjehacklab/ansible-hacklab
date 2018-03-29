@@ -1,0 +1,10 @@
+[Unit]
+Description=mediawiki socket
+
+[Socket]
+ListenStream=/run/mediawiki.sock
+SocketMode=0660
+SocketGroup=www-data
+
+[Install]
+WantedBy=sockets.target
