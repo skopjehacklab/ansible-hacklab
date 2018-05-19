@@ -1,0 +1,21 @@
+[Unit]
+Description=Mirror arch linux
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/sync_arch_mirror.sh
+User=arch
+IPAccounting=yes
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectSystem=strict
+ProtectControlGroups=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+MemoryDenyWriteExecute=yes
+RestrictRealtime=yes
+RestrictNamespaces=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+SystemCallArchitectures=native
+LockPersonality=yes

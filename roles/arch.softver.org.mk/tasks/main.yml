@@ -1,0 +1,30 @@
+---
+- name: install packages
+  package: name={{item}} state=present
+  with_items:
+    - nginx
+    - rsync
+    - certbot-nginx
+    - vim
+
+- name: copy systemd timer and service
+  copy: src={{item}} dest=/etc/systemd/system/ mode="0644" owner=root group=root
+  with_items:
+    - arch-mirror.timer
+    - arch-mirror.service
+    - certbot.timer
+    - certbot.service
+
+- name: copy sync script
+  copy: src=sync_arch_mirror.sh dest=/usr/local/bin/ mode="0755" owner=root group=root
+
+- name: copy nginx config
+  copy: src=arch.softver.org.mk.conf dest=/etc/nginx/ mode="0644" owner=root group=root
+
+
+- name: enable systemd services and timers
+  systemd: name={{item}} state=started enabled=true
+  with_items:
+    - nginx
+    - arch-mirror.timer
+    - certbot.timer
